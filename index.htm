@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألواح الرافدين - ملحمة العراق الرقمية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- شاشة البداية الروحانية -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1 class="kufi-title">ألواح الرافدين</h1>
+            <p class="splash-subtitle">العراق ليس بلداً، إنه وعاء الزمن</p>
+            <div class="splash-glyphs">
+                <span>𒀭</span>
+                <span>𒆠</span>
+                <span>𒎌</span>
+            </div>
+            <button id="start-journey" class="splash-btn">ابدأ الرحلة</button>
+        </div>
+        
+        <!-- غبار ذهبي عائم -->
+        <div class="floating-dust-container"></div>
+        
+        <!-- صوت الناي البعيد (يُشغل بعد التفاعل) -->
+    </div>
+
+    <!-- شاشة اختيار اللوح (المستويات) -->
+    <div id="levels-screen" style="display: none;">
+        <div class="levels-header">
+            <h2>الألواح السبعة</h2>
+            <p>اختر لوحاً لتبدأ رحلتك</p>
+        </div>
+        
+        <div class="tablets-container">
+            <div class="tablet-card" data-level="1">
+                <div class="tablet-number">١</div>
+                <h3>وركاء</h3>
+                <p>حيث بدأ كل شيء</p>
+                <div class="tablet-preview uruk-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="2">
+                <div class="tablet-number">٢</div>
+                <h3>أهوار الجنوب</h3>
+                <p>الماء الذي يكتب</p>
+                <div class="tablet-preview marshes-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="3">
+                <div class="tablet-number">٣</div>
+                <h3>بغداد المستديرة</h3>
+                <p>مدينة السلام</p>
+                <div class="tablet-preview baghdad-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="4">
+                <div class="tablet-number">٤</div>
+                <h3>سامراء</h3>
+                <p>المئذنة الملوية</p>
+                <div class="tablet-preview samarra-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="5">
+                <div class="tablet-number">٥</div>
+                <h3>كربلاء</h3>
+                <p>وردة على الرمل</p>
+                <div class="tablet-preview karbala-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="6">
+                <div class="tablet-number">٦</div>
+                <h3>بابل</h3>
+                <p>بوابة لا تذهب لأحد</p>
+                <div class="tablet-preview babylon-preview"></div>
+            </div>
+            
+            <div class="tablet-card" data-level="7" id="last-tablet">
+                <div class="tablet-number">٧</div>
+                <h3>العراق في قلبي</h3>
+                <p>الذاكرة</p>
+                <div class="tablet-preview memory-preview"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- حاوية اللعبة (للمستوى الحالي) -->
+    <div id="game-screen" style="display: none;">
+        <div id="game-container">
+            <div id="level-title"></div>
+            <div id="level-subtitle"></div>
+            
+            <div id="tablet">
+                <div class="tablet-edge edge-top"></div>
+                <div class="tablet-edge edge-bottom"></div>
+                <div class="tablet-edge edge-left"></div>
+                <div class="tablet-edge edge-right"></div>
+                
+                <div class="burned-corner corner-tl"></div>
+                <div class="burned-corner corner-tr"></div>
+                <div class="burned-corner corner-bl"></div>
+                <div class="burned-corner corner-br"></div>
+                
+                <div id="player"></div>
+                <div id="shadow">
+                    <div class="shadow-figure">
+                        <div class="shadow-head"></div>
+                        <div class="shadow-agal"></div>
+                    </div>
+                </div>
+                
+                <!-- عناصر خاصة بكل مستوى ستضاف هنا ديناميكياً -->
+                <div id="level-elements"></div>
+            </div>
+            
+            <div id="instructions">
+                <span id="instruction-text">📍 اضغط على اللوح لترك بصمتك</span>
+            </div>
+            
+            <button id="back-to-levels" class="nav-btn">↺ العودة للألواح</button>
+        </div>
+    </div>
+
+    <!-- شاشة نهاية المستوى -->
+    <div id="level-complete" style="display: none;">
+        <div class="complete-content">
+            <div id="complete-kufi-letter"></div>
+            <h2 id="complete-message"></h2>
+            <p id="complete-poem"></p>
+            <button id="next-level-btn">التالي</button>
+        </div>
+    </div>
+
+    <!-- شاشة النهاية العظمى -->
+    <div id="grand-finale" style="display: none;">
+        <div class="finale-content">
+            <div class="white-scarf"></div>
+            <h2>﴿أَلَيْسَ ذٰلِكَ بِقَادِرٍ عَلَىٰ أَن يُحْيِيَ ٱلْمَوْتَىٰ﴾</h2>
+            <p class="finale-message">
+                سبعة ألواح... سبعة آلاف سنة...<br>
+                العراق ليس مكاناً تزوره،<br>
+                بل حنيناً تحمله في قلبك أينما ذهبت.
+            </p>
+            <button id="restart-saga">ابدأ الملحمة من جديد</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
